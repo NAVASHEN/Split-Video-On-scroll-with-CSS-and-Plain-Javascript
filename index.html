@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Split Video On scroll with CSS and Plain Javascript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", verdana, sans-serif;
+      }
+      body {
+        background: #222;
+        min-height: 301vh;
+      }
+
+      section {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      section .side {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      section .side video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      section .side#side1 {
+        clip-path: polygon(0 0, 0% 100%, 100% 100%);
+      }
+      section .side#side2 {
+        clip-path: polygon(0 0, 100% 0%, 100% 100%);
+      }
+      .content {
+        color: #fff;
+        padding: 50px;
+        margin-top: 150vh;
+      }
+      .content h2 {
+        font-size: 3em;
+      }
+      .content p {
+        font-size: 1.2em;
+      }
+      .alert {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        z-index: 1000;
+        height: 100px;
+        width: 100px;
+        color: white;
+        font-family: "Poppins", verdana, sans-serif;
+        font-size: 0.5em;
+        opacity: 0.5;
+      }
+      .copyright {
+        position: absolute;
+        top: 55%;
+        left: 25%;
+        z-index: 1000;
+        height: 1000px;
+        width: 1000px;
+        color: white;
+        font-family: "Poppins", verdana, sans-serif;
+        font-size: 500%;
+        opacity: 0.5;
+        transform: skew(0deg, -15deg) translateY(-180px);
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="side" id="side1">
+        <video src="sample.mp4" autoplay muted loop></video>
+      </div>
+      <div class="alert">
+        <p>Scroll Down</p>
+      </div>
+      <div class="copyright">NAVASHEN DASARI</div>
+      <div class="side" id="side2">
+        <video src="sample.mp4" autoplay muted loop></video>
+      </div>
+    </section>
+    <p>Scroll Down</p>
+    <div class="content">
+      <h2>Lorem Ipsum Dolor Silet</h2>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
+        exercitationem quis veniam soluta itaque blanditiis eaque magnam
+        incidunt accusantium. Consequatur dolores doloribus cupiditate eum sunt
+        non voluptatem eius temporibus deleniti.Lorem ipsum, dolor sit amet
+        consectetur adipisicing elit. Laborum exercitationem quis veniam soluta
+        itaque blanditiis eaque magnam incidunt accusantium. Consequatur dolores
+        doloribus cupiditate eum sunt non voluptatem eius temporibus
+        deleniti.Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Laborum exercitationem quis veniam soluta itaque blanditiis eaque magnam
+        incidunt accusantium. Consequatur dolores doloribus cupiditate eum sunt
+        non voluptatem eius temporibus deleniti.Lorem ipsum, dolor sit amet
+        consectetur adipisicing elit. Laborum exercitationem quis veniam soluta
+        itaque blanditiis eaque magnam incidunt accusantium. Consequatur dolores
+        doloribus cupiditate eum sunt non voluptatem eius temporibus
+        deleniti.Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Laborum exercitationem quis veniam soluta itaque blanditiis eaque magnam
+        incidunt accusantium. Consequatur dolores doloribus cupiditate eum sunt
+        non voluptatem eius temporibus deleniti.Lorem ipsum, dolor sit amet
+        consectetur adipisicing elit. Laborum exercitationem quis veniam soluta
+        itaque blanditiis eaque magnam incidunt accusantium. Consequatur dolores
+        doloribus cupiditate eum sunt non voluptatem eius temporibus
+        deleniti.Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Laborum exercitationem quis veniam soluta itaque blanditiis eaque magnam
+        incidunt accusantium. Consequatur dolores doloribus cupiditate eum sunt
+        non voluptatem eius temporibus deleniti.Lorem ipsum, dolor sit amet
+        consectetur adipisicing elit. Laborum exercitationem quis veniam soluta
+        itaque blanditiis eaque magnam incidunt accusantium. Consequatur dolores
+        doloribus cupiditate eum sunt non voluptatem eius temporibus
+        deleniti.Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Laborum exercitationem quis veniam soluta itaque blanditiis eaque magnam
+        incidunt accusantium. Consequatur dolores doloribus cupiditate eum sunt
+        non voluptatem eius temporibus deleniti.
+      </p>
+    </div>
+    <script>
+      let side1 = document.getElementById("side1");
+      let side2 = document.getElementById("side2");
+
+      window.addEventListener("scroll", function () {
+        side1.style.left = -window.pageYOffset + "px";
+        side2.style.left = window.pageYOffset + "px";
+      });
+    </script>
+  </body>
+</html>
